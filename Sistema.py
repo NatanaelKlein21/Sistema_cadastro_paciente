@@ -20,7 +20,7 @@ class Paciente(Pessoa):
         for registro in self.registros:
             print(registro)
 
-
+# classe RegistroMedico se manteve
 class RegistroMedico:
     def __init__(self, data, sintomas, diagnostico, prescricao):
         self.data = data
@@ -30,6 +30,21 @@ class RegistroMedico:
 
     def __str__(self):
         return f"Data: {self.data}\nSintomas: {self.sintomas}\nDiagnóstico: {self.diagnostico}\nPrescrição: {self.prescricao}"
+
+# Classe PessoaFactory criada 
+class PessoaFactory(ABC):
+    def criar_pessoa(self):
+        pass
+
+# Classe PacienteFactory criada
+class PacienteFactory(PessoaFactory):
+    def criar_pessoa(self, nome, idade, genero):
+        return Paciente(nome, idade, genero)
+
+# Classe RegistroMedicoFactory
+class RegistroMedicoFactory:
+    def criar_registro_medico(self, data, sintomas, diagnostico, prescricao):
+        return RegistroMedico(data, sintomas, diagnostico, prescricao)
 
 
 def menu_principal():
