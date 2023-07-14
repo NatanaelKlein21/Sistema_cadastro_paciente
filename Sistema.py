@@ -1,8 +1,16 @@
-class Paciente:
+from abc import ABC, abstractmethod
+
+# Criação da classe Pessoa
+class Pessoa(ABC):
     def __init__(self, nome, idade, genero):
         self.nome = nome
         self.idade = idade
         self.genero = genero
+
+# Alteração da classe Paciente
+class Paciente(Pessoa):
+    def __init__(self, nome, idade, genero):
+        super().__init__(nome, idade, genero)
         self.registros = []
 
     def adicionar_registro(self, registro):
@@ -11,6 +19,7 @@ class Paciente:
     def listar_registros(self):
         for registro in self.registros:
             print(registro)
+
 
 class RegistroMedico:
     def __init__(self, data, sintomas, diagnostico, prescricao):
