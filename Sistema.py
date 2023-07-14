@@ -55,6 +55,7 @@ def menu_principal():
     print("0. Sair")
     print("---------------------------")
 
+# Cadastrar novos pacientes
 def cadastrar_paciente():
     nome = input("Nome do Paciente: ")
     idade = input("Idade: ")
@@ -63,6 +64,7 @@ def cadastrar_paciente():
     pacientes.append(paciente)
     print("Paciente cadastrado com sucesso!")
 
+# Adicionar novos registros medicos 
 def adicionar_registro_medico():
     nome = input("Nome do Paciente: ")
     encontrado = False
@@ -80,6 +82,7 @@ def adicionar_registro_medico():
     if not encontrado:
         print("Paciente não encontrado.")
 
+# Listar os registros médicos
 def listar_registros_medicos():
     nome = input("Nome do Paciente: ")
     encontrado = False
@@ -93,15 +96,19 @@ def listar_registros_medicos():
     if not encontrado:
         print("Paciente não encontrado.")
 
+# Alteração nos parametros com base nas novas classes criadas
 pacientes = []
+pessoa_factory = PacienteFactory()
+registro_factory = RegistroMedicoFactory()
 
+# Escolha de entrada
 while True:
     menu_principal()
     opcao = input("Escolha uma opção: ")
     if opcao == "1":
-        cadastrar_paciente()
+        cadastrar_paciente(pessoa_factory)
     elif opcao == "2":
-        adicionar_registro_medico()
+        adicionar_registro_medico(registro_factory)
     elif opcao == "3":
         listar_registros_medicos()
     elif opcao == "0":
